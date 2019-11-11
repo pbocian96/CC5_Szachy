@@ -1,16 +1,20 @@
 import board from './board';
+//import changePlayer from './changePlayer';
+import {whoseMove, changePlayer} from './whoseMove';
+
 
 const touched = (e) => {
     const x = e.currentTarget.id[0];
     const y = e.currentTarget.id[2];
-    if (!board[x][y]) {
+    if (!board[x][y] || board[x][y].side!=whoseMove) {
         return
     }
     const possibleMoves = board[x][y].findLegalMoves();
     for (let el of possibleMoves) {
-        document.getElementById(el).className += ` possibleMove`;
+        document.getElementById(el).className += `possibleMove`;
         document.getElementById(el).addEventListener('click', (e) => {
             board[x][y].move(e.currentTarget.id)
+            changePlayer();
             for (let x = 0; x < board.length; x++) {
                 for (let y = 0; y < board[x].length; y++) {
                     document.getElementById(`${x},${y}`).className = document.getElementById(`${x},${y}`).className.replace(`possibleMove`, '');
@@ -24,6 +28,7 @@ const touched = (e) => {
                     document.getElementById(`${x},${y}`).addEventListener('click', (e) => { touched(e) });
                 }
             }
+
         })
     }
 
