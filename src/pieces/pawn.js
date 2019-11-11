@@ -13,6 +13,10 @@ class Pawn extends Piece {
       this.x - 1 > 0 && possibleMoves.push(`${this.x - 1},${this.y}`);
       this.x - 2 > 0 && possibleMoves.push(`${this.x - 2},${this.y}`);
     }
+    if (this.side == 'black') {
+      this.x + 1 > 0 && possibleMoves.push(`${this.x + 1},${this.y}`);
+      this.x + 2 > 0 && possibleMoves.push(`${this.x + 2},${this.y}`);
+    }
     return possibleMoves;
   }
   promote() {}
