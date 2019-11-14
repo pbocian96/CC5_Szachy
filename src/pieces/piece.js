@@ -6,19 +6,9 @@ class Piece {
         this.y = y;
         this.side = side; //'black' or 'white'
     }
+    
     move(id) {
-        const newX = id[0];
-        const newY = id[2];
-
-        //clearing previous place
-        board[this.x][this.y] = null;
-        document.getElementById(`${this.x},${this.y}`).innerHTML = "";
-
-        //setting new
-        this.x = newX;
-        this.y = newY;
-        document.getElementById(id).innerHTML = this.display;
-
+        ;
     }
 
     findLegalMoves() {
