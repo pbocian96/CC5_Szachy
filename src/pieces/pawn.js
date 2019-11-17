@@ -15,7 +15,6 @@ class Pawn extends Piece {
       //możliwe bicie
       if (board[this.x-1][this.y-1]!=undefined )
         {
-          console.log(board[this.x-1][this.y-1])
           this.x-1 && this.y-1 && possibleMoves.push(`${this.x-1},${this.y-1}`);
         }
       if (board[this.x-1][this.y+1]!=undefined)
