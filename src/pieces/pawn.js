@@ -13,20 +13,20 @@ class Pawn extends Piece {
     const possibleMoves = [];
     if (this.side == 'white') {
       if (this.x==6){
-        this.x - 1 >=0 && possibleMoves.push(`${this.x - 1},${this.y}`);
-        this.x - 2 >=0 && board[this.x-1][this.y] == undefined && possibleMoves.push(`${this.x - 2},${this.y}`);    
+		this.x - 1 >=0 && board[this.x-1][this.y] == undefined && possibleMoves.push(`${this.x - 1},${this.y}`); 
+        this.x - 2 >=0 && board[this.x-1][this.y] == undefined && board[this.x-1][this.y] == undefined && possibleMoves.push(`${this.x - 2},${this.y}`);    
       }
       else{
-        this.x - 1 >= 0 && possibleMoves.push(`${this.x - 1},${this.y}`);}
+        this.x - 1 >= 0 && board[this.x-1][this.y] == undefined && possibleMoves.push(`${this.x - 1},${this.y}`);}
     }
 
     if (this.side == 'black') {
       if (this.x==1){
-        this.x + 1 <=7 && possibleMoves.push(`${this.x + 1},${this.y}`);
-        this.x + 2 <=7 && possibleMoves.push(`${this.x + 2},${this.y}`);
+        this.x + 1 <=7 && board[this.x+1][this.y] == undefined possibleMoves.push(`${this.x + 1},${this.y}`);
+        this.x + 2 <=7 && board[this.x+1][this.y] == undefined && board[this.x+2][this.y] == undefined && possibleMoves.push(`${this.x + 2},${this.y}`);
       }
       else{
-        this.x + 1 <= 7 && possibleMoves.push(`${this.x + 1},${this.y}`);}
+        this.x + 1 <= 7 && board[this.x+1][this.y] == undefined && possibleMoves.push(`${this.x + 1},${this.y}`);}
     }
     return possibleMoves;
   }
@@ -53,3 +53,4 @@ class Pawn extends Piece {
 }
 
 export default Pawn;
+
