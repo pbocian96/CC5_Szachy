@@ -24,8 +24,8 @@ class Pawn extends Piece {
       //brak bicia
       //pierwszy ruch
       if (this.x==6){
-        this.x - 1 >=0 && board[this.x-1][this.y] == undefined && possibleMoves.push(`${this.x - 1},${this.y}`);
-        this.x - 2 >=0 && board[this.x-1][this.y] == undefined && board[this.x-2][this.y] == undefined && possibleMoves.push(`${this.x - 2},${this.y}`);    
+        board[this.x-1][this.y] == undefined && possibleMoves.push(`${this.x - 1},${this.y}`);
+        board[this.x-1][this.y] == undefined && board[this.x-2][this.y] == undefined && possibleMoves.push(`${this.x - 2},${this.y}`);    
       }
       //pozostałe ruchy
       else{
@@ -45,8 +45,8 @@ class Pawn extends Piece {
       //brak bicia
       //pierwszy ruch
       if (this.x==1){
-        this.x + 1 <=7 && board[this.x+1][this.y] == undefined && possibleMoves.push(`${this.x + 1},${this.y}`);
-        this.x + 2 <=7 && board[this.x+1][this.y] == undefined && board[this.x+2][this.y] == undefined && possibleMoves.push(`${this.x + 2},${this.y}`);
+        board[this.x+1][this.y] == undefined && possibleMoves.push(`${this.x + 1},${this.y}`);
+        board[this.x+1][this.y] == undefined && board[this.x+2][this.y] == undefined && possibleMoves.push(`${this.x + 2},${this.y}`);
       }
       //pozostałe ruchy
       else{
