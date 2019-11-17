@@ -14,7 +14,7 @@ class Pawn extends Piece {
     if (this.side == 'white') {
       if (this.x==6){
         this.x - 1 >=0 && possibleMoves.push(`${this.x - 1},${this.y}`);
-        this.x - 2 >=0 && possibleMoves.push(`${this.x - 2},${this.y}`);    
+        this.x - 2 >=0 && board[this.x-1][this.y] == undefined && possibleMoves.push(`${this.x - 2},${this.y}`);    
       }
       else{
         this.x - 1 >= 0 && possibleMoves.push(`${this.x - 1},${this.y}`);}
