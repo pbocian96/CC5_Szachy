@@ -8,25 +8,50 @@ class Pawn extends Piece {
     this.name = 'pawn';
     this.display = `<i class="fas fa-chess-pawn ${side}"></i>`;
   }
-  
+
   findLegalMoves() {
-    const possibleMoves = [];
+    const possibleMoves = []; 
     if (this.side == 'white') {
+      //możliwe bicie
+      if (board[this.x-1][this.y-1]!=undefined )
+        {
+          console.log(board[this.x-1][this.y-1])
+          this.x-1 && this.y-1 && possibleMoves.push(`${this.x-1},${this.y-1}`);
+        }
+      if (board[this.x-1][this.y+1]!=undefined)
+        {
+          this.x-1 && this.y+1 && possibleMoves.push(`${this.x-1},${this.y+1}`);
+        }
+      //brak bicia
+      //pierwszy ruch
       if (this.x==6){
-        this.x - 1 >=0 && possibleMoves.push(`${this.x - 1},${this.y}`);
-        this.x - 2 >=0 && possibleMoves.push(`${this.x - 2},${this.y}`);    
+        this.x - 1 >=0 && board[this.x-1][this.y] == undefined && possibleMoves.push(`${this.x - 1},${this.y}`);
+        this.x - 2 >=0 && board[this.x-1][this.y] == undefined && board[this.x-2][this.y] == undefined && possibleMoves.push(`${this.x - 2},${this.y}`);    
       }
+      //pozostałe ruchy
       else{
-      this.x - 1 >= 0 && possibleMoves.push(`${this.x - 1},${this.y}`);}
+         this.x - 1 >= 0 && board[this.x-1][this.y] == undefined && possibleMoves.push(`${this.x - 1},${this.y}`);}
     }
 
     if (this.side == 'black') {
+      //mozliwe bicie
+      if (board[this.x+1][this.y+1]!=undefined)
+        {
+          this.x+1 && this.y+1 && possibleMoves.push(`${this.x+1},${this.y+1}`);
+        }
+      if (board[this.x+1][this.y-1]!=undefined)
+        {
+          this.x+1 && this.y-1 && possibleMoves.push(`${this.x+1},${this.y-1}`);
+        }
+      //brak bicia
+      //pierwszy ruch
       if (this.x==1){
-        this.x + 1 <=7 && possibleMoves.push(`${this.x + 1},${this.y}`);
-        this.x + 2 <=7 && possibleMoves.push(`${this.x + 2},${this.y}`);
+        this.x + 1 <=7 && board[this.x+1][this.y] == undefined && possibleMoves.push(`${this.x + 1},${this.y}`);
+        this.x + 2 <=7 && board[this.x+1][this.y] == undefined && board[this.x+2][this.y] == undefined && possibleMoves.push(`${this.x + 2},${this.y}`);
       }
+      //pozostałe ruchy
       else{
-        this.x + 1 <= 7 && possibleMoves.push(`${this.x + 1},${this.y}`);}
+        this.x + 1 <=7 && board[this.x+1][this.y] == undefined && possibleMoves.push(`${this.x + 1},${this.y}`);}
     }
     return possibleMoves;
   }
@@ -48,13 +73,8 @@ class Pawn extends Piece {
   promote() {
    }
      
-    
-
-  
-
-  
-  
   enPassant(){}
+
 }
 
 export default Pawn;
