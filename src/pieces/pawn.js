@@ -22,7 +22,7 @@ class Pawn extends Piece {
 
     if (this.side == 'black') {
       if (this.x==1){
-        this.x + 1 <=7 && board[this.x+1][this.y] == undefined possibleMoves.push(`${this.x + 1},${this.y}`);
+        this.x + 1 <=7 && board[this.x+1][this.y] == undefined && possibleMoves.push(`${this.x + 1},${this.y}`);
         this.x + 2 <=7 && board[this.x+1][this.y] == undefined && board[this.x+2][this.y] == undefined && possibleMoves.push(`${this.x + 2},${this.y}`);
       }
       else{
