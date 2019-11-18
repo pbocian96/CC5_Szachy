@@ -11,6 +11,34 @@ class Bishop extends Piece {
 
         const possibleMoves = [];
 
+        let hasFreeRoute1 = true;
+        let hasFreeRoute2 = true;
+        let hasFreeRoute3 = true;
+        let hasFreeRoute4 = true;
+
+        for (let i = 1; i <= 7; i++){
+            if(this.x + i <= 7 && this.y + i <= 7 && hasFreeRoute1){
+                possibleMoves.push(`${this.x + i},${this.y + i}`);
+                if(hasFreeRoute1 && board[this.x+i][this.y+i] != undefined)
+                    hasFreeRoute1 = false;
+            }
+            if(this.x - i >= 0 && this.y - i >= 0 && hasFreeRoute2){
+                possibleMoves.push(`${this.x - i},${this.y - i}`);
+                if(hasFreeRoute2 && board[this.x-i][this.y-i] != undefined)
+                    hasFreeRoute2 = false;
+            }
+            if(this.x + i <= 7 && this.y - i >= 0 && hasFreeRoute3){
+                possibleMoves.push(`${this.x + i},${this.y - i}`);
+                if(hasFreeRoute3 && board[this.x+i][this.y-i] != undefined)
+                    hasFreeRoute3 = false;
+            }
+            if(this.x - i >= 0 && this.y + i <= 7 && hasFreeRoute4){
+                possibleMoves.push(`${this.x - i},${this.y + i}`);
+                if(hasFreeRoute4 && board[this.x-i][this.y+i] != undefined)
+                    hasFreeRoute4 = false;
+            }
+        }
+        
         return possibleMoves;
     }
 

@@ -15,11 +15,11 @@ class Pawn extends Piece {
       //możliwe bicie
       if (board[this.x-1][this.y-1]!=undefined )
         {
-          this.x-1 && this.y-1 && possibleMoves.push(`${this.x-1},${this.y-1}`);
+          this.x-1>=0 && this.y-1>=0 && possibleMoves.push(`${this.x-1},${this.y-1}`);
         }
       if (board[this.x-1][this.y+1]!=undefined)
         {
-          this.x-1 && this.y+1 && possibleMoves.push(`${this.x-1},${this.y+1}`);
+          this.x-1>=0 && this.y+1<=7 && possibleMoves.push(`${this.x-1},${this.y+1}`);
         }
       //brak bicia
       //pierwszy ruch
@@ -29,18 +29,18 @@ class Pawn extends Piece {
       }
       //pozostałe ruchy
       else{
-         this.x - 1 >= 0 && board[this.x-1][this.y] == undefined && possibleMoves.push(`${this.x - 1},${this.y}`);}
+         this.x-1>= 0 && board[this.x-1][this.y] == undefined && possibleMoves.push(`${this.x - 1},${this.y}`);}
     }
 
     if (this.side == 'black') {
       //mozliwe bicie
       if (board[this.x+1][this.y+1]!=undefined)
         {
-          this.x+1 && this.y+1 && possibleMoves.push(`${this.x+1},${this.y+1}`);
+          this.x+1<=7 && this.y+1<=7 && possibleMoves.push(`${this.x+1},${this.y+1}`);
         }
       if (board[this.x+1][this.y-1]!=undefined)
         {
-          this.x+1 && this.y-1 && possibleMoves.push(`${this.x+1},${this.y-1}`);
+          this.x+1<=7 && this.y-1>=0 && possibleMoves.push(`${this.x+1},${this.y-1}`);
         }
       //brak bicia
       //pierwszy ruch
@@ -50,7 +50,7 @@ class Pawn extends Piece {
       }
       //pozostałe ruchy
       else{
-        this.x + 1 <=7 && board[this.x+1][this.y] == undefined && possibleMoves.push(`${this.x + 1},${this.y}`);}
+        this.x+1<=7 && board[this.x+1][this.y] == undefined && possibleMoves.push(`${this.x + 1},${this.y}`);}
     }
     return possibleMoves;
   }

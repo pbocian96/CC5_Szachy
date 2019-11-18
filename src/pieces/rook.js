@@ -8,28 +8,38 @@ class Rook extends Piece {
         this.display = `<i class="fas fa-chess-rook ${side}"></i>`;//fontawesome rook
     }
     findLegalMoves() {
-
         
         const possibleMoves = [];
-        {
-            
-            for (let i = 1; i <= 7; i++){
-                if(this.x - i >= 0)
-                    possibleMoves.push(`${this.x - i},${this.y}`)
-                if(this.x + i <= 7)
-                    possibleMoves.push(`${this.x + i},${this.y}`)
-                if(this.y - i >= 0)
-                    possibleMoves.push(`${this.x},${this.y - i}`)
-                if(this.y + i <= 7)
-                    possibleMoves.push(`${this.x},${this.y + i}`)
+
+        let hasFreeRoute1 = true;
+        let hasFreeRoute2 = true;
+        let hasFreeRoute3 = true;
+        let hasFreeRoute4 = true;
+
+        for (let i = 1; i <= 7; i++){
+            if(this.x - i >= 0 && hasFreeRoute1){
+                possibleMoves.push(`${this.x - i},${this.y}`);
+                if(hasFreeRoute1 && board[this.x-i][this.y] != undefined)
+                    hasFreeRoute1 = false;
             }
-
-            
-
-            return possibleMoves;
-        }   
-            
+            if(this.x + i <= 7 && hasFreeRoute2){
+                possibleMoves.push(`${this.x + i},${this.y}`);
+                if(hasFreeRoute2 && board[this.x+i][this.y] != undefined)
+                    hasFreeRoute2 = false;
+            }
+            if(this.y - i >= 0 && hasFreeRoute3){
+                possibleMoves.push(`${this.x},${this.y - i}`);
+                if(hasFreeRoute3 && board[this.x][this.y-i] != undefined)
+                    hasFreeRoute3 = false;
+            }
+            if(this.y + i <= 7 && hasFreeRoute4){
+                possibleMoves.push(`${this.x},${this.y + 1}`);
+                if(hasFreeRoute4 && board[this.x][this.y+i] != undefined)
+                    hasFreeRoute4 = false;
+            }
+        }    
         
+        return possibleMoves;       
     }
 
     move(id) {

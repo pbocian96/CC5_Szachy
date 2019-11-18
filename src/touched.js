@@ -1,4 +1,5 @@
 import board from './board';
+import {isCheck} from './isCheck';
 //import changePlayer from './changePlayer';
 import {whoseMove, changePlayer} from './whoseMove';
 
@@ -13,7 +14,13 @@ const touched = (e) => {
     for (let el of possibleMoves) {
         document.getElementById(el).className += `possibleMove`;
         document.getElementById(el).addEventListener('click', (e) => {
-            board[x][y].move(e.currentTarget.id)
+            board[x][y].move(e.currentTarget.id);
+            console.log('');
+            console.log('');
+            let iswhitecheck = isCheck('white');
+            console.log('returned' + iswhitecheck);
+            let isblackcheck = isCheck('black');
+            console.log('returned' + isblackcheck);
             changePlayer();
             for (let x = 0; x < board.length; x++) {
                 for (let y = 0; y < board[x].length; y++) {
