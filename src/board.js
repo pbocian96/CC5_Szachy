@@ -8,12 +8,7 @@ const board = new Array(8);
 for (let i = 0; i < 8; i++) {
     board[i] = new Array(8);
 }
-//mamy pustą tablice tu trzeba zaimportować figury wedle przykładu dla pionka
-//let pawn = new Pawn(6, 0, 'white');
-//board[pawn.x][pawn.y] = pawn;
-//pawn = new Pawn(6, 1, 'white');
-//board[pawn.x][pawn.y] = pawn;
-/*
+
 //białe pionki
 for (let i = 0; i < 8; i++){
     let pawn=new Pawn(6,i,'white');
@@ -52,7 +47,6 @@ board[bishop.x][bishop.y] = bishop;
 bishop = new Bishop(0, 5, 'black');
 board[bishop.x][bishop.y] = bishop;
 //królowa
-*/
 let queen= new Queen(7, 3, 'white');
 board[queen.x][queen.y] = queen;
 queen = new Queen(0, 3, 'black');
