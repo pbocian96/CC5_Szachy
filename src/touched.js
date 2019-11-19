@@ -15,13 +15,8 @@ const touched = (e) => {
         document.getElementById(el).className += `possibleMove`;
         document.getElementById(el).addEventListener('click', (e) => {
             board[x][y].move(e.currentTarget.id);
-            console.log('');
-            console.log('');
-            let iswhitecheck = isCheck('white');
-            console.log('returned' + iswhitecheck);
-            let isblackcheck = isCheck('black');
-            console.log('returned' + isblackcheck);
             changePlayer();
+            isCheck(whoseMove) && window.alert("check");
             for (let x = 0; x < board.length; x++) {
                 for (let y = 0; y < board[x].length; y++) {
                     document.getElementById(`${x},${y}`).className = document.getElementById(`${x},${y}`).className.replace(`possibleMove`, '');
